@@ -5,16 +5,16 @@ import org.example.util.LoadAndCreateConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class DeleteExample {
+public class UpdateExample {
 
-    private static void delete(int id) {
-
+    private static void update(int id, String value) {
         try (Connection connection = LoadAndCreateConnection.getConnection()) {
-            String QUERY = "DELETE FROM student where student_id = ?";
+            String QUERY = "update student set last_name = ? where student_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, value);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
-            System.out.println("Record Deleted");
+            System.out.println("Record update");
         } catch (Exception exception) {
             exception.printStackTrace();
             System.out.println(exception.getMessage());
@@ -22,8 +22,7 @@ public class DeleteExample {
 
     }
 
-
     public static void main(String[] args) {
-        delete(103);
+        update(104, "Mishra");
     }
 }
