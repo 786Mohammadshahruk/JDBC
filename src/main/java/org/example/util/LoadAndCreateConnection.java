@@ -7,6 +7,7 @@ import java.sql.SQLException;
 public class LoadAndCreateConnection {
 
     public static Connection getConnection() {
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver Is Loaded");
@@ -14,6 +15,7 @@ public class LoadAndCreateConnection {
             classNotFoundException.printStackTrace();
             System.out.println("Getting Error While Loading the JDBC Driver");
         }
+
         Connection connection = null;
         String USER = "root";
         String PASSWORD = "root12345";
